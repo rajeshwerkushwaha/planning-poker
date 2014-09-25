@@ -1,3 +1,4 @@
+require 'socket'
 PlanningPokerRails::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -24,11 +25,14 @@ PlanningPokerRails::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
-
+	
+  
+  domain = Socket.gethostname+'.codio.io:9292'
+  
   # Publisher for push notification
   config.publisher = {
     # development faye server
-    domain: 'localhost:9292',
+    domain: domain,
     # secret key
     secret: 'secret'
   }
